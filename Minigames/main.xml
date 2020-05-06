@@ -1,0 +1,37 @@
+<mod name="Minigames" author="Luffy" global_key="MiniGames" min_lib_ver="3.0">
+    <AssetUpdates id="-1" version="1.0" provider="modworkshop"/>
+
+    <AddFiles directory="Assets">
+        <texture path="ui/interact_lockpick_circle_1"/>
+        <texture path="ui/interact_lockpick_circle_1_fail"/>
+        <texture path="ui/interact_lockpick_circle_2"/>
+        <texture path="ui/interact_lockpick_circle_2_fail"/>
+        <texture path="ui/interact_lockpick_circle_3"/>
+        <texture path="ui/interact_lockpick_circle_3_fail"/>
+        <texture path="ui/interact_lockpick_tool"/>
+        <texture path="ui/interact_pager"/>
+        <texture path="ui/raid_secondary_menu_bg"/>
+    </AddFiles>
+
+    <Classes directory="Classes">
+        <class file="MiniGameInteraction.lua"/>
+        <class file="RaidWW2MiniGame.lua"/>
+    </Classes>
+
+    <Hooks directory="Hooks">
+        <hook file="TweakData.lua" source_file="lib/tweak_data/tweakdata"/>
+        <hook file="GSM.lua" source_file="lib/utils/game_state_machine/gamestatemachine"/>
+        <hook file="PlayerStandard.lua" source_file="lib/units/beings/player/states/playerstandard"/>
+    </Hooks>
+
+    <Localization directory="Loc" default="english.txt">
+        <localization language="english" file="english.txt"/>
+    </Localization>
+
+    <Options auto_build_menu="true">
+        <options>
+            <option type="bool" default_value="true" name="ModifyLockPicks"/>
+            <option type="bool" default_value="true" name="ModifyPagers"/>
+        </options>
+    </Options>
+</mod>
