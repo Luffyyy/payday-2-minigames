@@ -14,7 +14,8 @@
     </AddFiles>
 
     <Classes directory="Classes">
-        <class file="MiniGameInteraction.lua"/>
+        <class file="MiniGameBase.lua"/>
+        <class file="HUDRaidWW2MiniGame.lua"/>
         <class file="RaidWW2MiniGame.lua"/>
     </Classes>
 
