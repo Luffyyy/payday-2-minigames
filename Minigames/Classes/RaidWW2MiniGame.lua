@@ -1,7 +1,7 @@
 RaidWW2MiniGame = RaidWW2MiniGame or class(MiniGameBase)
 
 function RaidWW2MiniGame:enter(interact_object)
-    local raid = MiniGames:get("Raid")
+    local raid = MiniGames:get("raid")
 	self._target_unit = interact_object
 	self._tweak_data = tweak_data.interaction[interact_object:interaction().tweak_data]
 	self._tweak_data.sounds = self._tweak_data.sounds or raid.sounds
@@ -25,7 +25,7 @@ function RaidWW2MiniGame:enter(interact_object)
 	self._cooldown = 0.1
     self._completed = false
 
-    self:make_hud("Raid", self._tweak_data)
+    self:make_hud("raid", self._tweak_data)
 end
 
 function RaidWW2MiniGame:destroy()
@@ -34,7 +34,7 @@ function RaidWW2MiniGame:destroy()
 		self:say(self._tweak_data.sounds.complete)
     end
     if self._tweak_data.grows_each_interaction then
-        self._tweak_data.number_of_circles = math.min(self._tweak_data.number_of_circles + 1, self._tweak_data.grows_each_interaction_max, MiniGames:get("Raid").max_circles)
+        self._tweak_data.number_of_circles = math.min(self._tweak_data.number_of_circles + 1, self._tweak_data.grows_each_interaction_max, MiniGames:get("raid").max_circles)
     end
 end
 
@@ -102,7 +102,7 @@ function RaidWW2MiniGame:_check_all_complete()
 	self._completed = completed
 
 	if completed then
-		self._end_t = MiniGames:get("Raid").completed_delay
+		self._end_t = MiniGames:get("raid").completed_delay
 	end
 end
 
@@ -146,7 +146,7 @@ function RaidWW2MiniGame:_check_stage_complete(fail)
 		self._hud:set_bar_valid(current_stage, false)
 		circle:set_rotation(math.random() * 360)
 
-		self._cooldown = MiniGames:get("Raid").failed_cooldown
+		self._cooldown = MiniGames:get("raid").failed_cooldown
 		self._invalid_stage = current_stage
 
 		self:say(self._tweak_data.sounds.fail)

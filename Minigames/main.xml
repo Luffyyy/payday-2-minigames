@@ -31,7 +31,7 @@
 
     <Options auto_build_menu="true">
         <options>
-            <option type="bool" default_value="true" name="ModifyLockPicks"/>
+            <option type="bool" default_value="true" name="ModifyLockpicks"/>
             <option type="bool" default_value="true" name="ModifyPagers"/>
         </options>
     </Options>

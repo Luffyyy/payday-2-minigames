@@ -83,7 +83,7 @@ function HUDRaidWW2MiniGame:init(params)
 		font_size = 24,
 		align = "center",
 		word_wrap = false,
-		text = utf8.to_upper(managers.localization:text(self._tweak_data.legend_exit_text_id or "hud_legend_lockpicking_exit", {
+		text = utf8.to_upper(managers.localization:text(self._tweak_data.legend_exit_text_id or "hud_legend_exit", {
 			BTN_CANCEL = managers.localization:btn_macro("jump") or utf8.char(57344)
 		})),
 		x = 0,
@@ -133,7 +133,7 @@ function HUDRaidWW2MiniGame:show()
 		local circle = CircleBitmapGuiObject:new(self._hud_panel, {
 			blend_mode = "add",
 			layer = 2,
-			image = MiniGames:get("Raid").circles[math.min(i, 3)],
+			image = MiniGames:get("raid").circles[math.min(i, 3)],
 			radius = circle_radius,
 			sides = self._sides,
 			current = self._sides,
@@ -175,7 +175,7 @@ function HUDRaidWW2MiniGame:complete_stage(index)
 	end
 end
 
-function HUDRaidWW2MiniGame:hide(complete)
+function HUDRaidWW2MiniGame:destroy(complete)
 	if complete then
         self._lockpick_texture:animate(callback(self, self, "_animate_interaction_complete"))
         self._background_texture:set_visible(false)
@@ -183,7 +183,7 @@ function HUDRaidWW2MiniGame:hide(complete)
         self._legend_interact_text:set_visible(false)
         self._lockpick_texture:set_visible(false)
 	else
-		self:destroy()
+		self:full_destroy()
 	end
 
 	self._is_active = false
@@ -198,7 +198,7 @@ function HUDRaidWW2MiniGame:set_bar_valid(circle_id, valid)
 
 	local circle_data = self._circles[circle_id]
 	circle_data.valid = valid
-	circle_data.circle:set_image(MiniGames:get("Raid").circles[math.min(circle_id, 3)]..(valid and "" or "_fail"))
+	circle_data.circle:set_image(MiniGames:get("raid").circles[math.min(circle_id, 3)]..(valid and "" or "_fail"))
 	circle_data.circle:set_alpha(valid and 1 or 0.95)
 	circle_data.circle._circle:set_blend_mode("add")
 end
@@ -222,7 +222,7 @@ function HUDRaidWW2MiniGame:update(t, dt)
 	end
 end
 
-function HUDRaidWW2MiniGame:destroy()
+function HUDRaidWW2MiniGame:full_destroy()
     self._hud_panel:clear()
     self._background_texture:parent():remove(self._background_texture)
 end
@@ -274,7 +274,7 @@ function HUDRaidWW2MiniGame:_animate_interaction_complete()
 		self._circles[i].circle:set_visible(false)
 	end
 
-	self:destroy()
+	self:full_destroy()
 end
 
 function HUDRaidWW2MiniGame:_animate_stage_complete()

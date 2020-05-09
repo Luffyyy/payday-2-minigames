@@ -42,9 +42,6 @@ function MiniGameInteraction:set_controller_enabled(enabled)
 end
 
 function MiniGameInteraction:cb_leave(success)
-	if self._completed then
-		return
-	end
 
 	local player = managers.player:player_unit()
 	if player then
@@ -86,7 +83,7 @@ end
 function MiniGameInteraction:_player_damage(info)
 end
 
-function MiniGameInteraction:at_enter(old_state, interact_object)
+function MiniGameInteraction:at_enter(old_state, params)
 	local player = managers.player:player_unit()
 
 	if player then
@@ -110,7 +107,7 @@ function MiniGameInteraction:at_enter(old_state, interact_object)
 
 	self:_setup_controller()
 
-	self._interaction = RaidWW2MiniGame:new(self, interact_object)
+	self._interaction = MiniGames:get(params.type).class:new(self, params.object)
 
 	managers.hud:show(PlayerBase.PLAYER_INFO_HUD)
 	managers.hud:show(PlayerBase.PLAYER_INFO_HUD_FULLSCREEN)
@@ -129,8 +126,10 @@ function MiniGameInteraction:at_exit()
 		player:character_damage():remove_listener("MiniGameInteraction")
 	end
 
-	self._interaction:destroy()
-	self._interaction = nil
+	if self._interaction then
+		self._interaction:destroy()
+		self._interaction = nil
+	end
 
 	managers.hud:hide(PlayerBase.PLAYER_INFO_HUD)
 	managers.hud:hide(PlayerBase.PLAYER_INFO_HUD_FULLSCREEN)

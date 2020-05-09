@@ -6,5 +6,6 @@
     "MinigamesModifyPagersTitleID" : "Modify Pagers",
     "MinigamesModifyPagersDescID" : "Should the mod modify pagers? This changes the gameplay revolving pagers",
     "hud_legend_lockpicking_interact": "$BTN_INTERACT Lockpick",
-    "hud_legend_lockpicking_exit": "$BTN_CANCEL Exit", 
+    "hud_legend_persuade_interact": "$BTN_INTERACT Persuade",
+    "hud_legend_exit": "$BTN_CANCEL Exit",
 }

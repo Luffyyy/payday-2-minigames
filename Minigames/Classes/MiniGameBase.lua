@@ -7,11 +7,11 @@ end
 function MiniGameBase:enter(object) end
 
 function MiniGameBase:make_hud(type, ...)
-    self._hud = MiniGames:get(type).class:new(...)
+    self._hud = MiniGames:get(type).hud_class:new(...)
 end
 
 function MiniGameBase:destroy()
-    self._hud:hide(self._completed)
+    self._hud:destroy(self._completed)
     self._hud = nil
 end
 
