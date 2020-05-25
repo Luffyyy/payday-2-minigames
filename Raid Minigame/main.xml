@@ -1,5 +1,5 @@
-<mod name="Minigames" author="Luffy" global_key="MiniGames" min_lib_ver="3.0">
-    <AssetUpdates id="-1" version="1.0" provider="modworkshop"/>
+<mod name="RaidMinigame" author="Luffy" global_key="RaidMinigame" min_lib_ver="3.0">
+    <AssetUpdates id="27550" version="1.0" provider="modworkshop"/>
 
     <AddFiles directory="Assets">
         <texture path="ui/interact_lockpick_circle_1"/>
@@ -14,7 +14,7 @@
     </AddFiles>
 
     <Classes directory="Classes">
-        <class file="MiniGameBase.lua"/>
+        <class file="Networking.lua"/>
         <class file="HUDRaidWW2MiniGame.lua"/>
         <class file="RaidWW2MiniGame.lua"/>
     </Classes>
@@ -33,6 +33,7 @@
         <options>
             <option type="bool" default_value="true" name="ModifyLockpicks"/>
             <option type="bool" default_value="true" name="ModifyPagers"/>
+            <option type="bool" default_value="true" name="PlayVoiceLines"/>
         </options>
     </Options>
 </mod>

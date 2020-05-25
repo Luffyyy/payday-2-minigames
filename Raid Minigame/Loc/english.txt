@@ -1,0 +1,13 @@
+{
+	"RaidMinigameOptionsButtonTitleID" : "Raid Minigame Options",
+	"RaidMinigameOptionsButtonDescID" : "",
+    "RaidMinigameModifyLockpicksTitleID" : "Modify Lockpicks",
+    "RaidMinigameModifyLockpicksDescID" : "Should the mod modify lockpicks? This changes the gameplay revolving lockpicks",
+    "RaidMinigameModifyPagersTitleID" : "Modify Pagers",
+    "RaidMinigameModifyPagersDescID" : "Should the mod modify pagers? This changes the gameplay revolving pagers",
+    "RaidMinigamePlayVoiceLinesTitleID" : "Play Voice Lines",
+    "RaidMinigamePlayVoiceLinesDescID" : "Should the mod play voice lines when picking a lock?",
+    "hud_legend_lockpicking_interact": "$BTN_INTERACT Lockpick",
+    "hud_legend_persuade_interact": "$BTN_INTERACT Persuade",
+    "hud_legend_exit": "$BTN_CANCEL Exit",
+}

@@ -6,10 +6,7 @@ local Inter = tweak_data.interaction
 local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
 local difficulty_index = tweak_data:difficulty_to_index(difficulty)
 
-MiniGames.types = MiniGames.Types or {}
-MiniGames.types.raid = {
-    lockpick = true,
-    pager = true,
+RaidMinigame.data = {
     sounds = {
         start = {"g92", "g10", "a01x_any", "g72", "p29"},
         success = {"g28", "v46", "p17"},
@@ -17,8 +14,6 @@ MiniGames.types.raid = {
         fail = {"g60", "g29"},
         complete = {"v46", "v07"},
     },
-    class = RaidWW2MiniGame,
-    hud_class = HUDRaidWW2MiniGame,
     circles = {
         "ui/interact_lockpick_circle_1",
         "ui/interact_lockpick_circle_2",
@@ -55,28 +50,24 @@ MiniGames.types.raid = {
     max_circles = 6
 }
 
-function MiniGames:get(type)
-    return self.types[type]
-end
-
 if difficulty_index == 5 then
     difficulty_index = 4
 elseif difficulty_index == 6 or difficulty_index == 7 then
     difficulty_index = 5
 end
 
-local raid = MiniGames:get("raid")
+local raid = RaidMinigame.data
 
-if MiniGames.Options:GetValue("ModifyLockpicks") then
+if RaidMinigame.Options:GetValue("ModifyLockpicks") then
     local lock_hard = Inter.pick_lock_hard
     lock_hard.failable = true
     lock_hard.number_of_circles = math.clamp(difficulty_index, 3, raid.max_circles)
 end
 
-if MiniGames.Options:GetValue("ModifyPagers") then
+if RaidMinigame.Options:GetValue("ModifyPagers") then
     local pager = Inter.corpse_alarm_pager
     pager.minigame_icon = "ui/interact_pager"
-    pager.special_interaction = "raid"
+    pager.special_interaction = (Network:is_server() or Global.game_settings.single_player) and "raid" or nil
     pager.failable = Global.game_settings.one_down
     pager.uses_timer = 5
     pager.grows_each_interaction = true

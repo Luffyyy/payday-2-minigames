@@ -1,6 +1,6 @@
 HUDRaidWW2MiniGame = HUDRaidWW2MiniGame or class()
 
-function HUDRaidWW2MiniGame:init(params)
+function HUDRaidWW2MiniGame:init(parent, params)
 	self._parent = parent
 	managers.hud:remove_interact()
 
@@ -133,7 +133,7 @@ function HUDRaidWW2MiniGame:show()
 		local circle = CircleBitmapGuiObject:new(self._hud_panel, {
 			blend_mode = "add",
 			layer = 2,
-			image = MiniGames:get("raid").circles[math.min(i, 3)],
+			image = RaidMinigame.data.circles[math.min(i, 3)],
 			radius = circle_radius,
 			sides = self._sides,
 			current = self._sides,
@@ -198,7 +198,7 @@ function HUDRaidWW2MiniGame:set_bar_valid(circle_id, valid)
 
 	local circle_data = self._circles[circle_id]
 	circle_data.valid = valid
-	circle_data.circle:set_image(MiniGames:get("raid").circles[math.min(circle_id, 3)]..(valid and "" or "_fail"))
+	circle_data.circle:set_image(RaidMinigame.data.circles[math.min(circle_id, 3)]..(valid and "" or "_fail"))
 	circle_data.circle:set_alpha(valid and 1 or 0.95)
 	circle_data.circle._circle:set_blend_mode("add")
 end

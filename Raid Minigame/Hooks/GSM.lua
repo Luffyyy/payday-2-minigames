@@ -18,6 +18,10 @@ function MiniGameInteraction:_setup_controller()
 	self._controller:set_enabled(true)
 end
 
+function MiniGameInteraction:controller()
+	return self._controller
+end
+
 function MiniGameInteraction:_clear_controller()
 	local menu_controller = managers.menu:get_controller()
 
@@ -42,7 +46,6 @@ function MiniGameInteraction:set_controller_enabled(enabled)
 end
 
 function MiniGameInteraction:cb_leave(success)
-
 	local player = managers.player:player_unit()
 	if player then
 		local movement = player:movement():current_state()
@@ -107,7 +110,7 @@ function MiniGameInteraction:at_enter(old_state, params)
 
 	self:_setup_controller()
 
-	self._interaction = MiniGames:get(params.type).class:new(self, params.object)
+	self._interaction = RaidWW2MiniGame:new(self, params.object)
 
 	managers.hud:show(PlayerBase.PLAYER_INFO_HUD)
 	managers.hud:show(PlayerBase.PLAYER_INFO_HUD_FULLSCREEN)
@@ -146,7 +149,7 @@ function MiniGameInteraction:_play_sound(event, no_stop)
 end
 
 --I hate this class with the bane of my existence
-Hooks:PostHook(GameStateMachine, "init", "MiniGamesGameStateInit", function(self)
+Hooks:PostHook(GameStateMachine, "init", "RaidMinigameGameStateInit", function(self)
     Gamemode.STATES.ingame_special_interaction = 'ingame_special_interaction'
 
     local ingame_special_interaction = MiniGameInteraction:new(self)

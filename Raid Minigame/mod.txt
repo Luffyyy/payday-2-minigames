@@ -1,0 +1,5 @@
+{
+	"name" : "Raid WW2 minigame",
+	"description" : "Adds the Raid WW2 minigame to PayDay 2.",
+	"author" : "Luffy"
+}

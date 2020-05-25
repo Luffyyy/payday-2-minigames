@@ -1,5 +1,0 @@
-{
-	"name" : "Minigames",
-	"description" : "Adds minigames to payday 2.",
-	"author" : "Luffy"
-}
