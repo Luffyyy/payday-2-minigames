@@ -1,5 +1,5 @@
 <mod name="RaidMinigame" author="Luffy" global_key="RaidMinigame" min_lib_ver="3.0">
-    <AssetUpdates id="27550" version="1.0" provider="modworkshop"/>
+    <AssetUpdates id="27550" version="1.0.2" provider="modworkshop"/>
 
     <AddFiles directory="Assets">
         <texture path="ui/interact_lockpick_circle_1"/>
